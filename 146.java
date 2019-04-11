@@ -18,7 +18,7 @@ class LRUCache {
         }
         else {
             v=-1;
-             System.out.println(hm);
+             //System.out.println(hm);
         }
         
         return v;
@@ -36,34 +36,32 @@ class LRUCache {
         }else{            
             hm.put(key,value);
             updateNewkey(key);
-        }         
+        }        
+
+        if(hm.size()>capacity){
+         hm.remove(list.getLast());
+             list.removeLast(); 
+        }
+
+
+		
     }
     
     public void updateNewkey(int key){
-        if(hm.size()>capacity){
-         hm.remove(list.getLast());
-             list.removeLast(); 
-        }
-             
-        else {
-            list.addFirst(key);
-        }
-        System.out.println(hm);
+ 
+            list.addFirst(Integer.valueOf(key));
+      
+        //System.out.println(hm);
     }
     
     public void update(int key){
-        if(hm.size()>capacity){
-         hm.remove(list.getLast());
-             list.removeLast(); 
-        }
-              
-        else {
+
            
             list.remove(Integer.valueOf(key));
            
-            list.addFirst(key);
-        }
-        System.out.println(hm);
+            list.addFirst(Integer.valueOf(key));
+        
+        //System.out.println(hm);
     }
     
 }
