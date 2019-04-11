@@ -9,14 +9,17 @@ class LRUCache {
     }
     
     public int get(int key) {
+        //System.out.println("get "+key);
           int v=0;
         if(hm.containsKey(key)){
                       
             v=hm.get(key);
             update(key);
         }
-        else 
+        else {
             v=-1;
+             System.out.println(hm);
+        }
         
         return v;
         
@@ -24,7 +27,10 @@ class LRUCache {
     }
     
     public void put(int key, int value) {
+        //System.out.println("put "+key+" "+value);
         if(hm.containsKey(key)){
+            hm.remove(key);
+            hm.put(key,value);
             update(key);            
             
         }else{            
@@ -42,7 +48,7 @@ class LRUCache {
         else {
             list.addFirst(key);
         }
-        
+        System.out.println(hm);
     }
     
     public void update(int key){
@@ -52,10 +58,12 @@ class LRUCache {
         }
               
         else {
-            list.remove(hm.get(Integer.valueOf(key)));
+           
+            list.remove(Integer.valueOf(key));
+           
             list.addFirst(key);
         }
-           
+        System.out.println(hm);
     }
     
 }
