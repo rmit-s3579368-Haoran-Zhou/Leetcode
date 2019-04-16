@@ -12,7 +12,7 @@ class Solution {
             return;
         else{
         node.val=node.next.val;
-        node=node.next.next;
+        node.next=node.next.next;
         
         }
         
